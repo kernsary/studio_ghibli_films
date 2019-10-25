@@ -1,11 +1,12 @@
 <template>
   <div id="app">
-    <h1>From App.vue</h1>
+    <h1>Studio Ghibli films</h1>
+    <film-list :allFilms = "allFilms"></film-list>
   </div>
 </template>
 
 <script>
-
+import filmList from './components/filmList.vue'
 
 export default {
   name: 'app',
@@ -19,8 +20,9 @@ export default {
     fetch('https://ghibliapi.herokuapp.com/films')
     .then(response => response.json())
     .then((rawFilmData) => {
-      this.allFilms = rawFilmData;
-      this.allFilmsSummary = this.getFilmSummaries(this.allFilms)
+      this.allFilms = rawFilmData
+      // ;
+      // this.allFilmsSummary = this.getFilmSummaries(this.allFilms)
     })
   },
   methods: {
@@ -31,7 +33,7 @@ export default {
     }
   },
   components: {
-
+    "film-list": filmList
   }
 }
 </script>
