@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     <h1>Studio Ghibli films</h1>
-    <film-list :allFilms = "allFilms"></film-list>
-    <film-details v-if="selectedFilm" :selectedFilm = "selectedFilm"></film-details>
+    <div id="content-wrapper">
+      <film-list :allFilms = "allFilms"></film-list>
+      <film-details v-if="selectedFilm" :selectedFilm = "selectedFilm"></film-details>
+    </div>
   </div>
 </template>
 
@@ -16,8 +18,7 @@ export default {
   data() {
     return {
       allFilms: [],
-      // allFilmsSummary: []
-      selectedFilm: {}
+      selectedFilm: null
     }
   },
   mounted() {
@@ -31,13 +32,6 @@ export default {
       this.selectedFilm = selectedFilm
     })
   },
-  methods: {
-    getFilmSummaries(films) {
-      return films.map(function (film) {
-        return {'title': film.title, 'description': film.description}
-      });
-    }
-  },
   components: {
     "film-list": filmList,
     'film-details': filmDetails
@@ -46,12 +40,21 @@ export default {
 </script>
 
 <style>
-  /* #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-} */
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+h1, h2 {
+  font-family: "Lucida Grande", sans-serif;
+}
+
+h1 {
+  margin-bottom: 0.4rem;
+}
+
+#content-wrapper {
+  display: flex;
+}
+
 </style>

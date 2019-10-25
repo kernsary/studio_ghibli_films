@@ -1,9 +1,7 @@
 <template lang="html">
-  <div class="">
+  <div id="list-wrapper">
     <div v-for="film of allFilms" :key="film.id">
-      <h2>{{film.title}}</h2>
-      <!-- <p>{{film.description}}</p> -->
-      <button @click="handleClick(film)">See film info</button>
+      <button @click="handleClick(film)">{{film.title}}</button>
     </div>
   </div>
 </template>
@@ -13,11 +11,6 @@ import {eventBus} from '../main.js';
 
 export default {
   name: 'filmList',
-  // data() {
-  //   return{
-  //     film: {}
-  //   }
-  // },
   props: ["allFilms"],
   methods: {
     handleClick(selectedFilm) {
@@ -28,4 +21,24 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
+#list-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 14rem;
+}
+
+button {
+  margin: 0.2rem 0.2rem 0rem 0rem;
+  border: 0em none;
+  border-radius: 3%;
+  width: 6rem;
+  height: 1.5rem;
+  font-size: 0.5em;
+  color: White;
+  background-color: Green;
+  text-align: center;
+}
+
 </style>
